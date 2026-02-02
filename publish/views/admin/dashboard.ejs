@@ -1,0 +1,79 @@
+<%- include('../partials/header') %>
+
+<section class="page-header">
+  <div>
+    <h1>Paneli i Administratorit</h1>
+    <p>Miresevini, <strong><%= admin.name %></strong>. Menaxhoni kerkesat, njoftimet dhe perdoruesit.</p>
+  </div>
+  <a class="button primary" href="/admin/requests/new">Krijo kerkese</a>
+</section>
+
+<section class="card">
+  <h2>Kerkesat aktive</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Grupi i gjakut</th>
+        <th>Urgjente</th>
+        <th>Statusi</th>
+        <th>Afati</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% requests.forEach((request) => { %>
+        <tr>
+          <td>#<%= request.requestId %></td>
+          <td><%= request.bloodType %></td>
+          <td><%= request.urgency ? 'Po' : 'Jo' %></td>
+          <td><%= request.status %></td>
+          <td><%= request.deadline %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+
+<section class="grid">
+  <article class="card">
+    <h3>Perdoruesit (Dhurues)</h3>
+    <ul class="simple-list">
+      <% donors.forEach((donor) => { %>
+        <li>
+          <strong><%= donor.name %></strong>
+          <span><%= donor.email %></span>
+          <span><%= donor.phone %></span>
+        </li>
+      <% }) %>
+    </ul>
+  </article>
+  <article class="card">
+    <h3>Njoftimet e fundit</h3>
+    <ul class="notification-list compact">
+      <% notifications.forEach((notification) => { %>
+        <li class="notification-item">
+          <div>
+            <p><strong><%= notification.message %></strong></p>
+            <span><%= notification.sentAt %></span>
+          </div>
+          <span class="badge <%= notification.isRead ? 'success' : 'warning' %>">
+            <%= notification.isRead ? 'Lexuar' : 'Pa lexuar' %>
+          </span>
+        </li>
+      <% }) %>
+    </ul>
+  </article>
+</section>
+
+<section class="grid">
+  <article class="card">
+    <h3>Menaxho perdoruesit</h3>
+    <p>Krijo, perditeso dhe monitoro rolet e dhuruesve dhe administratorit.</p>
+  </article>
+  <article class="card">
+    <h3>Raportet</h3>
+    <p>Shiko statistika te kerkesave dhe eficences se njoftimeve.</p>
+  </article>
+</section>
+
+<%- include('../partials/footer') %>

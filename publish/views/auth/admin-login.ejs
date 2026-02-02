@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+<section class="auth-layout">
+  <div class="card auth-card">
+    <h1>Hyrje Administrator</h1>
+    <p>Identifikohuni per te menaxhuar kerkesat, raportet dhe perdoruesit.</p>
+
+    <% if (typeof error !== 'undefined') { %>
+      <div class="alert"><%= error %></div>
+    <% } %>
+
+    <form action="/auth/admin" method="POST">
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+      </div>
+      <div class="form-row">
+        <label for="password">Fjalekalimi</label>
+        <input id="password" name="password" type="password" required />
+      </div>
+      <button class="button primary" type="submit">Hyr</button>
+    </form>
+  </div>
+
+  <div class="card auth-card highlight">
+    <h3>Roli i administratorit</h3>
+    <ul>
+      <li>Krijon, perditeson dhe mbyll kerkesat.</li>
+      <li>Shikon raportet dhe statuset.</li>
+      <li>Menaxhon perdoruesit dhe njoftimet.</li>
+    </ul>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

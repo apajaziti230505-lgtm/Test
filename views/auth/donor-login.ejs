@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+
+<section class="auth-layout">
+  <div class="card auth-card">
+    <h1>Hyrje Dhurues</h1>
+    <p>Shenoni kredencialet per te marre njoftime dhe konfirmuar dhurimin.</p>
+
+    <% if (typeof error !== 'undefined') { %>
+      <div class="alert"><%= error %></div>
+    <% } %>
+
+    <form action="/auth/donor" method="POST">
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+      </div>
+      <div class="form-row">
+        <label for="phone">Numri i telefonit</label>
+        <input id="phone" name="phone" type="tel" required />
+      </div>
+      <div class="form-row">
+        <label for="password">Fjalekalimi</label>
+        <input id="password" name="password" type="password" required />
+      </div>
+      <button class="button primary" type="submit">Hyr</button>
+    </form>
+  </div>
+
+  <div class="card auth-card highlight">
+    <h3>Roli i dhuruesit</h3>
+    <ul>
+      <li>Pranon njoftime te pershtatshme per grupin e gjakut.</li>
+      <li>Konfirmon gatishmerine per dhurim.</li>
+      <li>Perditeson disponibilitetin.</li>
+    </ul>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
