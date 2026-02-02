@@ -27,6 +27,22 @@ const getCreateRequest = (req, res) => {
   });
 };
 
+const postCreateDonor = (req, res) => {
+  const nextId = donors.length ? donors[donors.length - 1].id + 1 : 1;
+  donors.push({
+    id: nextId,
+    name: req.body.name,
+    email: req.body.email,
+    phone: req.body.phone,
+    password: req.body.password,
+    role: "Dhurues",
+    availability: true,
+    lastDonationDate: req.body.lastDonationDate || null
+  });
+
+  res.redirect("/admin");
+};
+
 const postCreateRequest = (req, res) => {
   const nextId = requests.length ? requests[requests.length - 1].requestId + 1 : 100;
   requests.push({
@@ -46,5 +62,6 @@ const postCreateRequest = (req, res) => {
 module.exports = {
   getDashboard,
   getCreateRequest,
+  postCreateDonor,
   postCreateRequest
 };

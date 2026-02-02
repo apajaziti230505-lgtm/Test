@@ -1,39 +1,65 @@
 <%- include('partials/header') %>
 
-<section class="hero">
-  <div>
-    <h1>Aplikacion per Dhurimin e Gjakut</h1>
-    <p>Menaxho kerkesa urgjente, lidhu me dhuruesit dhe ndjek njoftimet ne kohe reale.</p>
-    <div class="cta-group">
-      <a class="button primary" href="/admin/requests/new">Krijo kerkese</a>
-      <a class="button ghost" href="/requests">Shiko kerkesat</a>
+<section class="hero-section">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-7">
+      <h1 class="display-5 fw-bold">Aplikacion per Dhurimin e Gjakut</h1>
+      <p class="lead text-muted">
+        Menaxho kerkesa urgjente, lidhu me dhuruesit dhe ndjek njoftimet ne kohe reale.
+      </p>
+      <div class="d-flex flex-wrap gap-3 mt-4">
+        <a class="btn btn-danger btn-lg" href="/admin/requests/new">Krijo kerkese</a>
+        <a class="btn btn-outline-danger btn-lg" href="/requests">Shiko kerkesat</a>
+      </div>
     </div>
-  </div>
-  <div class="hero-card">
-    <h3>Statistika te shpejta</h3>
-    <ul>
-      <li><strong><%= stats.requests %></strong> kerkes(a) aktive</li>
-      <li><strong><%= stats.donors %></strong> dhurues te regjistruar</li>
-    </ul>
+    <div class="col-lg-5">
+      <div class="card shadow-sm border-0 hero-card">
+        <div class="card-body">
+          <h5 class="card-title">Statistika te shpejta</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Kerkesa aktive</span>
+              <strong><%= stats.requests %></strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Dhurues te regjistruar</span>
+              <strong><%= stats.donors %></strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="grid">
-  <article class="card">
-    <h3>Administrator</h3>
-    <p>Krijon dhe menaxhon kerkesat per gjak, shikon raportet dhe administron perdoruesit.</p>
-    <a class="text-link" href="/admin">Shko te paneli</a>
-  </article>
-  <article class="card">
-    <h3>Dhurues</h3>
-    <p>Konfirmon disponibilitetin dhe merr njoftime per kerkesat me urgjence.</p>
-    <a class="text-link" href="/donor">Shko te paneli</a>
-  </article>
-  <article class="card">
-    <h3>Njoftime</h3>
-    <p>Sistemi njofton dhuruesit sipas grupit te gjakut dhe lokacionit.</p>
-    <a class="text-link" href="/requests/notifications">Shiko njoftimet</a>
-  </article>
+<section class="row g-4 mt-2">
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Administrator</h5>
+        <p class="card-text">Krijon dhe menaxhon kerkesat per gjak, shikon raportet dhe administron perdoruesit.</p>
+        <a class="btn btn-link text-danger p-0" href="/admin">Shko te paneli</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Dhurues</h5>
+        <p class="card-text">Konfirmon disponibilitetin dhe merr njoftime per kerkesat me urgjence.</p>
+        <a class="btn btn-link text-danger p-0" href="/donor">Shko te paneli</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Njoftime</h5>
+        <p class="card-text">Sistemi njofton dhuruesit sipas grupit te gjakut dhe lokacionit.</p>
+        <a class="btn btn-link text-danger p-0" href="/requests/notifications">Shiko njoftimet</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <%- include('partials/footer') %>

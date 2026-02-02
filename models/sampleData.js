@@ -24,7 +24,8 @@ const donors = [
     phone: "+38970111223",
     password: "donor123",
     role: "Dhurues",
-    availability: true
+    availability: true,
+    lastDonationDate: "2024-01-15"
   }),
   new Donor({
     id: 3,
@@ -33,7 +34,8 @@ const donors = [
     phone: "+38970111224",
     password: "donor123",
     role: "Dhurues",
-    availability: true
+    availability: true,
+    lastDonationDate: "2023-12-03"
   })
 ];
 

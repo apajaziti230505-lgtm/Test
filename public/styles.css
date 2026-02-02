@@ -20,6 +20,13 @@ body {
   color: var(--dark);
 }
 
+.hero-section {
+  background: linear-gradient(120deg, #fff5f5, #ffffff);
+  padding: 3rem 2rem;
+  border-radius: 24px;
+  margin-bottom: 2rem;
+}
+
 .container {
   width: min(1100px, 92%);
   margin: 0 auto;
@@ -277,14 +284,6 @@ main {
 .auth-card ul {
   margin: 1rem 0 0;
   padding-left: 1.2rem;
-}
-
-.alert {
-  background: #ffebee;
-  color: #b71c1c;
-  padding: 0.75rem;
-  border-radius: 12px;
-  margin: 1rem 0;
 }
 
 .simple-list {

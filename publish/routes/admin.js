@@ -11,6 +11,7 @@ const requireAdmin = (req, res, next) => {
 };
 
 router.get("/", requireAdmin, adminController.getDashboard);
+router.post("/donors", requireAdmin, adminController.postCreateDonor);
 router.get("/requests/new", requireAdmin, adminController.getCreateRequest);
 router.post("/requests", requireAdmin, adminController.postCreateRequest);
 

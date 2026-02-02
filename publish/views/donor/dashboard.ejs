@@ -1,44 +1,55 @@
 <%- include('../partials/header') %>
 
-<section class="page-header">
+<section class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
   <div>
-    <h1>Paneli i Dhuruesit</h1>
-    <p>Miresevini, <strong><%= donor.name %></strong>. Konfirmoni gatishmerine dhe ndiqni njoftimet.</p>
+    <h1 class="h2 fw-bold">Paneli i Dhuruesit</h1>
+    <p class="text-muted">Miresevini, <strong><%= donor.name %></strong>. Konfirmoni gatishmerine dhe ndiqni njoftimet.</p>
   </div>
   <form action="/donor/availability" method="POST">
-    <button class="button <%= donor.availability ? 'ghost' : 'primary' %>" type="submit">
+    <button class="btn <%= donor.availability ? 'btn-outline-danger' : 'btn-danger' %>" type="submit">
       <%= donor.availability ? 'Ndrysho ne Jo i disponueshem' : 'Konfirmo disponibilitetin' %>
     </button>
   </form>
 </section>
 
-<section class="card">
-  <h2>Njoftime te fundit</h2>
-  <ul class="notification-list">
-    <% notifications.forEach((notification) => { %>
-      <li class="notification-item">
-        <div>
-          <p><strong><%= notification.message %></strong></p>
-          <span><%= notification.sentAt %></span>
-        </div>
-        <span class="badge <%= notification.isRead ? 'success' : 'warning' %>">
-          <%= notification.isRead ? 'Lexuar' : 'Pa lexuar' %>
-        </span>
-      </li>
-    <% }) %>
-  </ul>
+<section class="card shadow-sm mb-4">
+  <div class="card-body">
+    <h2 class="h5">Njoftime te fundit</h2>
+    <ul class="list-group list-group-flush">
+      <% notifications.forEach((notification) => { %>
+        <li class="list-group-item d-flex justify-content-between align-items-center gap-3">
+          <div>
+            <strong><%= notification.message %></strong>
+            <div class="text-muted"><%= notification.sentAt %></div>
+          </div>
+          <span class="badge <%= notification.isRead ? 'text-bg-success' : 'text-bg-warning' %>">
+            <%= notification.isRead ? 'Lexuar' : 'Pa lexuar' %>
+          </span>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
 </section>
 
-<section class="grid">
-  <article class="card">
-    <h3>Profili</h3>
-    <p>Email: <%= donor.email %></p>
-    <p>Telefoni: <%= donor.phone %></p>
-  </article>
-  <article class="card">
-    <h3>Statusi i disponueshmerise</h3>
-    <p>Aktualisht jeni: <strong><%= donor.availability ? 'i disponueshem' : 'jo i disponueshem' %></strong></p>
-  </article>
+<section class="row g-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h3 class="h6">Profili</h3>
+        <p class="mb-1">Email: <%= donor.email %></p>
+        <p class="mb-1">Telefoni: <%= donor.phone %></p>
+        <p class="mb-0">Data e fundit e dhurimit: <%= donor.lastDonationDate || 'Nuk ka' %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h3 class="h6">Statusi i disponueshmerise</h3>
+        <p class="mb-0">Aktualisht jeni: <strong><%= donor.availability ? 'i disponueshem' : 'jo i disponueshem' %></strong></p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <%- include('../partials/footer') %>

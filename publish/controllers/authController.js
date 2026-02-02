@@ -26,10 +26,8 @@ const loginAdmin = (req, res) => {
 };
 
 const loginDonor = (req, res) => {
-  const { email, password, phone } = req.body;
-  const donor = donors.find(
-    (item) => item.email === email && item.password === password && item.phone === phone
-  );
+  const { email, password } = req.body;
+  const donor = donors.find((item) => item.email === email && item.password === password);
 
   if (donor) {
     const payload = JSON.stringify({

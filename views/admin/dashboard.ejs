@@ -1,79 +1,136 @@
 <%- include('../partials/header') %>
 
-<section class="page-header">
+<section class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
   <div>
-    <h1>Paneli i Administratorit</h1>
-    <p>Miresevini, <strong><%= admin.name %></strong>. Menaxhoni kerkesat, njoftimet dhe perdoruesit.</p>
+    <h1 class="h2 fw-bold">Paneli i Administratorit</h1>
+    <p class="text-muted">Miresevini, <strong><%= admin.name %></strong>. Menaxhoni kerkesat, njoftimet dhe perdoruesit.</p>
   </div>
-  <a class="button primary" href="/admin/requests/new">Krijo kerkese</a>
+  <a class="btn btn-danger" href="/admin/requests/new">Krijo kerkese</a>
 </section>
 
-<section class="card">
-  <h2>Kerkesat aktive</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Grupi i gjakut</th>
-        <th>Urgjente</th>
-        <th>Statusi</th>
-        <th>Afati</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% requests.forEach((request) => { %>
-        <tr>
-          <td>#<%= request.requestId %></td>
-          <td><%= request.bloodType %></td>
-          <td><%= request.urgency ? 'Po' : 'Jo' %></td>
-          <td><%= request.status %></td>
-          <td><%= request.deadline %></td>
-        </tr>
-      <% }) %>
-    </tbody>
-  </table>
+<section class="card shadow-sm mb-4">
+  <div class="card-body">
+    <h2 class="h5">Kerkesat aktive</h2>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Grupi i gjakut</th>
+            <th>Urgjente</th>
+            <th>Statusi</th>
+            <th>Afati</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% requests.forEach((request) => { %>
+            <tr>
+              <td>#<%= request.requestId %></td>
+              <td><%= request.bloodType %></td>
+              <td><%= request.urgency ? 'Po' : 'Jo' %></td>
+              <td><span class="badge text-bg-light"><%= request.status %></span></td>
+              <td><%= request.deadline %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
-<section class="grid">
-  <article class="card">
-    <h3>Perdoruesit (Dhurues)</h3>
-    <ul class="simple-list">
-      <% donors.forEach((donor) => { %>
-        <li>
-          <strong><%= donor.name %></strong>
-          <span><%= donor.email %></span>
-          <span><%= donor.phone %></span>
-        </li>
-      <% }) %>
-    </ul>
-  </article>
-  <article class="card">
-    <h3>Njoftimet e fundit</h3>
-    <ul class="notification-list compact">
-      <% notifications.forEach((notification) => { %>
-        <li class="notification-item">
-          <div>
-            <p><strong><%= notification.message %></strong></p>
-            <span><%= notification.sentAt %></span>
+<section class="row g-4">
+  <div class="col-lg-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h3 class="h6">Shto dhurues te ri</h3>
+        <form action="/admin/donors" method="POST" class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label" for="name">Emri</label>
+            <input class="form-control" id="name" name="name" required />
           </div>
-          <span class="badge <%= notification.isRead ? 'success' : 'warning' %>">
-            <%= notification.isRead ? 'Lexuar' : 'Pa lexuar' %>
-          </span>
-        </li>
-      <% }) %>
-    </ul>
-  </article>
+          <div class="col-md-6">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" id="email" name="email" type="email" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="phone">Telefoni</label>
+            <input class="form-control" id="phone" name="phone" type="tel" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="password">Fjalekalimi</label>
+            <input class="form-control" id="password" name="password" type="password" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="lastDonationDate">Data e fundit e dhurimit</label>
+            <input class="form-control" id="lastDonationDate" name="lastDonationDate" type="date" />
+          </div>
+          <div class="col-12">
+            <button class="btn btn-danger" type="submit">Shto dhurues</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h3 class="h6">Perdoruesit (Dhurues)</h3>
+        <ul class="list-group list-group-flush">
+          <% donors.forEach((donor) => { %>
+            <li class="list-group-item">
+              <div class="d-flex justify-content-between flex-wrap gap-2">
+                <div>
+                  <strong><%= donor.name %></strong>
+                  <div class="text-muted"><%= donor.email %></div>
+                  <div class="text-muted"><%= donor.phone %></div>
+                </div>
+                <span class="badge text-bg-light">Dhurimi i fundit: <%= donor.lastDonationDate || 'Nuk ka' %></span>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="grid">
-  <article class="card">
-    <h3>Menaxho perdoruesit</h3>
-    <p>Krijo, perditeso dhe monitoro rolet e dhuruesve dhe administratorit.</p>
-  </article>
-  <article class="card">
-    <h3>Raportet</h3>
-    <p>Shiko statistika te kerkesave dhe eficences se njoftimeve.</p>
-  </article>
+<section class="row g-4 mt-1">
+  <div class="col-lg-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h3 class="h6">Njoftimet e fundit</h3>
+        <ul class="list-group list-group-flush">
+          <% notifications.forEach((notification) => { %>
+            <li class="list-group-item d-flex justify-content-between align-items-center gap-3">
+              <div>
+                <strong><%= notification.message %></strong>
+                <div class="text-muted"><%= notification.sentAt %></div>
+              </div>
+              <span class="badge <%= notification.isRead ? 'text-bg-success' : 'text-bg-warning' %>">
+                <%= notification.isRead ? 'Lexuar' : 'Pa lexuar' %>
+              </span>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h3 class="h6">Menaxho perdoruesit</h3>
+        <p class="text-muted">Krijo, perditeso dhe monitoro rolet e dhuruesve dhe administratorit.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h3 class="h6">Raportet</h3>
+        <p class="text-muted">Shiko statistika te kerkesave dhe eficences se njoftimeve.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <%- include('../partials/footer') %>
