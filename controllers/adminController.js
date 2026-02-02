@@ -32,6 +32,7 @@ const getDashboard = (req, res) => {
     requests,
     donors,
     notifications,
+    BloodType,
     formError: null
   });
 };
@@ -46,7 +47,7 @@ const getCreateRequest = (req, res) => {
 };
 
 const postCreateDonor = (req, res) => {
-  const { name, email, phone, password, lastDonationDate } = req.body;
+  const { name, email, phone, password, lastDonationDate, bloodType } = req.body;
   if (!isValidEmailDomain(email)) {
     return res.status(400).render("admin/dashboard", {
       title: "Paneli i Administratorit",
@@ -54,6 +55,7 @@ const postCreateDonor = (req, res) => {
       requests,
       donors,
       notifications,
+      BloodType,
       formError: "Email duhet te jete nga domenet gmail.com, hotmail.com, outlook.com ose yahoo.com."
     });
   }
@@ -65,6 +67,7 @@ const postCreateDonor = (req, res) => {
       requests,
       donors,
       notifications,
+      BloodType,
       formError: "Numri i telefonit duhet te jete i Maqedonise (07XXXXXXX ose +3897XXXXXXX)."
     });
   }
@@ -78,7 +81,8 @@ const postCreateDonor = (req, res) => {
     password,
     role: "Dhurues",
     availability: true,
-    lastDonationDate: lastDonationDate || null
+    lastDonationDate: lastDonationDate || null,
+    bloodType: bloodType || BloodType.O_POSITIVE
   });
 
   res.redirect("/admin");

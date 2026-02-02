@@ -38,6 +38,7 @@
         <h3 class="h6">Profili</h3>
         <p class="mb-1">Email: <%= donor.email %></p>
         <p class="mb-1">Telefoni: <%= donor.phone %></p>
+        <p class="mb-1">Grupi i gjakut: <%= donor.bloodType %></p>
         <p class="mb-0">Data e fundit e dhurimit: <%= donor.lastDonationDate || 'Nuk ka' %></p>
       </div>
     </div>
@@ -45,8 +46,12 @@
   <div class="col-md-6">
     <div class="card shadow-sm h-100">
       <div class="card-body">
-        <h3 class="h6">Statusi i disponueshmerise</h3>
-        <p class="mb-0">Aktualisht jeni: <strong><%= donor.availability ? 'i disponueshem' : 'jo i disponueshem' %></strong></p>
+        <h3 class="h6">Grupet qe mund te marrin gjak prej jush</h3>
+        <div class="d-flex flex-wrap gap-2">
+          <% compatibleGroups.forEach((group) => { %>
+            <span class="badge text-bg-light"><%= group %></span>
+          <% }) %>
+        </div>
       </div>
     </div>
   </div>

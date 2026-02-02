@@ -66,6 +66,14 @@
             <input class="form-control" id="password" name="password" type="password" required />
           </div>
           <div class="col-md-6">
+            <label class="form-label" for="bloodType">Grupi i gjakut</label>
+            <select class="form-select" id="bloodType" name="bloodType" required>
+              <% Object.values(BloodType).forEach((type) => { %>
+                <option value="<%= type %>"><%= type %></option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="col-md-6">
             <label class="form-label" for="lastDonationDate">Data e fundit e dhurimit</label>
             <input class="form-control" id="lastDonationDate" name="lastDonationDate" type="date" />
           </div>
@@ -88,6 +96,7 @@
                   <strong><%= donor.name %></strong>
                   <div class="text-muted"><%= donor.email %></div>
                   <div class="text-muted"><%= donor.phone %></div>
+                  <div class="text-muted">Grupi: <%= donor.bloodType %></div>
                 </div>
                 <span class="badge text-bg-light">Dhurimi i fundit: <%= donor.lastDonationDate || 'Nuk ka' %></span>
               </div>

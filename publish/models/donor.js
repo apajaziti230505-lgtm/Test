@@ -1,10 +1,11 @@
 const User = require("./user");
 
 class Donor extends User {
-  constructor({ availability, lastDonationDate, ...rest }) {
+  constructor({ availability, lastDonationDate, bloodType, ...rest }) {
     super(rest);
     this.availability = availability;
     this.lastDonationDate = lastDonationDate;
+    this.bloodType = bloodType;
   }
 
   receiveNotification() {
