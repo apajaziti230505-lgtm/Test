@@ -1,9 +1,10 @@
 const { requests, RequestStatus } = require("../models/sampleData");
 
 const getRequests = (req, res) => {
+  const activeRequests = requests.filter((item) => item.status !== RequestStatus.E_PLOTESUAR);
   res.render("requests/index", {
     title: "Kerquesat per gjak",
-    requests
+    requests: activeRequests
   });
 };
 
@@ -26,6 +27,10 @@ const postConfirmDonation = (req, res) => {
     return res.status(404).render("not-found", { title: "Kerkesa nuk u gjet" });
   }
   request.status = RequestStatus.E_PLOTESUAR;
+  const index = requests.findIndex((item) => item.requestId === request.requestId);
+  if (index >= 0) {
+    requests.splice(index, 1);
+  }
 
   return res.render("requests/detail", {
     title: `Kerkesa #${request.requestId}`,

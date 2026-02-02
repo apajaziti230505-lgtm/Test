@@ -1,0 +1,10 @@
+<svg width="520" height="420" viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="420" rx="32" fill="#fff5f5"/>
+  <circle cx="130" cy="120" r="70" fill="#f8c0c0"/>
+  <circle cx="390" cy="95" r="55" fill="#f7b3b3"/>
+  <rect x="90" y="220" width="340" height="140" rx="24" fill="#ffffff" stroke="#f1b0b0" stroke-width="4"/>
+  <path d="M260 90C275 115 310 140 310 175C310 210 289 235 260 235C231 235 210 210 210 175C210 140 245 115 260 90Z" fill="#c62828"/>
+  <path d="M195 300C210 285 235 275 260 275C285 275 310 285 325 300" stroke="#c62828" stroke-width="8" stroke-linecap="round"/>
+  <path d="M170 250H350" stroke="#f1b0b0" stroke-width="6" stroke-linecap="round"/>
+  <text x="130" y="330" font-family="Arial" font-size="22" fill="#c62828">Dhuroni gjak, shpëtoni jetë</text>
+</svg>

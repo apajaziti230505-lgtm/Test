@@ -31,3 +31,7 @@ npm run publish
 ```
 
 Folderi `publish/` do te permbaje versionin e publikuar me te gjitha fajllat e nevojshem.
+
+## Database (SSMS)
+
+Scripti per krijimin e databazes gjendet ne `database/schema.sql` dhe mund te ekzekutohet ne SQL Server Management Studio.

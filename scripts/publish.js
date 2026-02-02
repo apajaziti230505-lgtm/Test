@@ -11,7 +11,8 @@ const itemsToCopy = [
   "models",
   "routes",
   "views",
-  "public"
+  "public",
+  "database"
 ];
 
 const ensureDir = (dirPath) => {
