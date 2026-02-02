@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+
+<section class="page-header">
+  <div>
+    <h1>Paneli i Dhuruesit</h1>
+    <p>Miresevini, <strong><%= donor.name %></strong>. Konfirmoni gatishmerine dhe ndiqni njoftimet.</p>
+  </div>
+  <form action="/donor/availability" method="POST">
+    <button class="button <%= donor.availability ? 'ghost' : 'primary' %>" type="submit">
+      <%= donor.availability ? 'Ndrysho ne Jo i disponueshem' : 'Konfirmo disponibilitetin' %>
+    </button>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Njoftime te fundit</h2>
+  <ul class="notification-list">
+    <% notifications.forEach((notification) => { %>
+      <li class="notification-item">
+        <div>
+          <p><strong><%= notification.message %></strong></p>
+          <span><%= notification.sentAt %></span>
+        </div>
+        <span class="badge <%= notification.isRead ? 'success' : 'warning' %>">
+          <%= notification.isRead ? 'Lexuar' : 'Pa lexuar' %>
+        </span>
+      </li>
+    <% }) %>
+  </ul>
+</section>
+
+<section class="grid">
+  <article class="card">
+    <h3>Profili</h3>
+    <p>Email: <%= donor.email %></p>
+    <p>Telefoni: <%= donor.phone %></p>
+  </article>
+  <article class="card">
+    <h3>Statusi i disponueshmerise</h3>
+    <p>Aktualisht jeni: <strong><%= donor.availability ? 'i disponueshem' : 'jo i disponueshem' %></strong></p>
+  </article>
+</section>
+
+<%- include('../partials/footer') %>

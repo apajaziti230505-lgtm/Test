@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+
+<section class="page-header">
+  <div>
+    <h1>Kerquesat per gjak</h1>
+    <p>Lista e kerkesave aktive dhe historiku i tyre.</p>
+  </div>
+</section>
+
+<section class="grid">
+  <% requests.forEach((request) => { %>
+    <article class="card">
+      <h3>Kerkesa #<%= request.requestId %></h3>
+      <p><strong>Grupi:</strong> <%= request.bloodType %></p>
+      <p><strong>Urgjente:</strong> <%= request.urgency ? 'Po' : 'Jo' %></p>
+      <p><strong>Statusi:</strong> <%= request.status %></p>
+      <p><strong>Lokacioni:</strong> <%= request.location.city %>, <%= request.location.region %></p>
+      <a class="text-link" href="/requests/<%= request.requestId %>">Detaje</a>
+    </article>
+  <% }) %>
+</section>
+
+<%- include('../partials/footer') %>
