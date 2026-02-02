@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+
+<section class="page-header">
+  <div>
+    <h1>Krijo kerkese per gjak</h1>
+    <p>Vendos grupin e gjakut, urgjencen dhe afatin per kerkesat e reja.</p>
+  </div>
+</section>
+
+<section class="card form-card">
+  <form action="/admin/requests" method="POST">
+    <div class="form-row">
+      <label for="bloodType">Grupi i gjakut</label>
+      <select name="bloodType" id="bloodType" required>
+        <% bloodTypes.forEach((type) => { %>
+          <option value="<%= type %>"><%= type %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="description">Pershkrimi</label>
+      <textarea id="description" name="description" rows="4" required>Kerkese urgjente ne <%= location.city %>.</textarea>
+    </div>
+    <div class="form-row">
+      <label for="deadline">Afati</label>
+      <input id="deadline" name="deadline" type="date" required />
+    </div>
+    <div class="form-row checkbox">
+      <input id="urgency" name="urgency" type="checkbox" checked />
+      <label for="urgency">Urgjente</label>
+    </div>
+    <button class="button primary" type="submit">Ruaj kerkesen</button>
+  </form>
+</section>
+
+<%- include('../partials/footer') %>
