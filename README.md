@@ -20,7 +20,7 @@ Aplikacioni hapet ne `http://localhost:3000`.
 ## Kredenciale testuese
 
 - Administrator: `admin@bloodapp.com` / `admin123`
-- Dhurues (shembull): `blerim@example.com` / `donor123`
+- Dhurues (shembull): `blerim@gmail.com` / `donor123`
 
 ## Publish
 

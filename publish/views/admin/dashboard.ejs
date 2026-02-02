@@ -43,6 +43,11 @@
     <div class="card shadow-sm h-100">
       <div class="card-body">
         <h3 class="h6">Shto dhurues te ri</h3>
+
+        <% if (formError) { %>
+          <div class="alert alert-danger"><%= formError %></div>
+        <% } %>
+
         <form action="/admin/donors" method="POST" class="row g-3">
           <div class="col-md-6">
             <label class="form-label" for="name">Emri</label>

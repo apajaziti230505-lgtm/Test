@@ -20,7 +20,7 @@ const donors = [
   new Donor({
     id: 2,
     name: "Blerim Aliu",
-    email: "blerim@example.com",
+    email: "blerim@gmail.com",
     phone: "+38970111223",
     password: "donor123",
     role: "Dhurues",
@@ -30,7 +30,7 @@ const donors = [
   new Donor({
     id: 3,
     name: "Arta Ismaili",
-    email: "arta@example.com",
+    email: "arta@hotmail.com",
     phone: "+38970111224",
     password: "donor123",
     role: "Dhurues",

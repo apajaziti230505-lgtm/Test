@@ -8,6 +8,10 @@
   <a class="button ghost" href="/requests">Kthehu</a>
 </section>
 
+<% if (confirmationMessage) { %>
+  <div class="alert alert-success"><%= confirmationMessage %></div>
+<% } %>
+
 <section class="card">
   <ul class="details-list">
     <li><span>Grupi i gjakut</span><strong><%= request.bloodType %></strong></li>
@@ -22,7 +26,9 @@
 <section class="card">
   <h2>Veprimet e dhuruesit</h2>
   <p>Dhuruesit e pershtatshem njoftohen dhe konfirmojne gatishmerine per dhurim.</p>
-  <button class="button primary" disabled>Konfirmo dhurimin</button>
+  <form action="/requests/<%= request.requestId %>/confirm" method="POST">
+    <button class="btn btn-success" type="submit">Konfirmo dhurimin</button>
+  </form>
 </section>
 
 <%- include('../partials/footer') %>
