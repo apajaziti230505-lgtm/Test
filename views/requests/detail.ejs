@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+<section class="page-header">
+  <div>
+    <h1>Kerkesa #<%= request.requestId %></h1>
+    <p><%= request.description %></p>
+  </div>
+  <a class="button ghost" href="/requests">Kthehu</a>
+</section>
+
+<section class="card">
+  <ul class="details-list">
+    <li><span>Grupi i gjakut</span><strong><%= request.bloodType %></strong></li>
+    <li><span>Urgjente</span><strong><%= request.urgency ? 'Po' : 'Jo' %></strong></li>
+    <li><span>Statusi</span><strong><%= request.status %></strong></li>
+    <li><span>Afati</span><strong><%= request.deadline %></strong></li>
+    <li><span>Data e krijimit</span><strong><%= request.createdAt %></strong></li>
+    <li><span>Lokacioni</span><strong><%= request.location.city %>, <%= request.location.region %></strong></li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Veprimet e dhuruesit</h2>
+  <p>Dhuruesit e pershtatshem njoftohen dhe konfirmojne gatishmerine per dhurim.</p>
+  <button class="button primary" disabled>Konfirmo dhurimin</button>
+</section>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<section class="page-header">
+  <div>
+    <h1>Njoftimet</h1>
+    <p>Sistemi gjeneron njoftime per dhuruesit sipas grupit te gjakut dhe lokacionit.</p>
+  </div>
+</section>
+
+<section class="card">
+  <ul class="notification-list">
+    <% notifications.forEach((notification) => { %>
+      <li class="notification-item">
+        <div>
+          <p><strong><%= notification.message %></strong></p>
+          <span><%= notification.sentAt %></span>
+        </div>
+        <span class="badge <%= notification.isRead ? 'success' : 'warning' %>">
+          <%= notification.isRead ? 'Lexuar' : 'Pa lexuar' %>
+        </span>
+      </li>
+    <% }) %>
+  </ul>
+</section>
+
+<%- include('../partials/footer') %>
